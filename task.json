@@ -1,0 +1,21 @@
+{
+	"type": "pendulum",
+	"T" : 10,
+	"g": 9.81,
+	"segments" : [
+		{
+			"m": 1,
+			"l": 2,
+			"theta": 0.2,
+			"omega": 0
+		},
+		{
+			"m": 2,
+			"l": 1.7,
+			"theta": 0.4,
+			"omega": 0
+		}
+	],
+	"method": "runge-kutta",
+	"dt": 0.04
+}
