@@ -26,7 +26,7 @@ def f_func(x_n, y_n):
 	omega1_n_1 = (B*l1*(y_n[2])**2 + C*m2*sin(y_n[1]) + D*m2*l2*y_n[3]**2 - E*sin(y_n[0])) / (l1*A)
 	omega2_n_1 = (-B*l2*y_n[3]**2 + C*(m1+2*m2)*sin(y_n[0]) - D*(m1+3*m2)*l1*y_n[2]**2 - E*sin(y_n[1]) - 24*9.81*m2*sin(y_n[1]))/(l2*A)
 
-	return [y_n[2],y_n[3],omega1_n_1,omega1_n_2]
+	return [y_n[2],y_n[3],omega1_n_1,omega2_n_1]
 
 
 def runge_kutta(dt, f1, f2):
