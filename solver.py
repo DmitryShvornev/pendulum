@@ -82,9 +82,9 @@ output_data = runge_kutta(0.01, f_func)
 fig, ax = plt.subplots()
 
 ax.scatter(output_data[4], output_data[0], c = 'red', label = "theta1")
-ax.scatter(output_data[4], output_data[1], c = 'green', label = "theta1")
-ax.scatter(output_data[4], output_data[2], c = 'blue', label = "theta1")
-ax.scatter(output_data[4], output_data[3], c = 'black', label = "theta1")
+ax.scatter(output_data[4], output_data[1], c = 'green', label = "theta2")
+ax.scatter(output_data[4], output_data[2], c = 'blue', label = "omega1")
+ax.scatter(output_data[4], output_data[3], c = 'black', label = "omega2")
 
 
 ax.set_title('Результаты расчетов')
