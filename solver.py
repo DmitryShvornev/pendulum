@@ -1,6 +1,7 @@
 import json
 from math import *
 import matplotlib.pyplot as plt
+import csv
 
 with open("task.json", 'r') as task_file:
 	task = json.load(task_file)
@@ -13,6 +14,18 @@ y_n - решение системы уравнений в текущей точ�
 theta1, theta2, omega1, omega2. 
 функция f_func  возвращает на выход вектор
 '''
+def print_to_csv(theta1_, theta2_, omega1_, omega2_, t_):
+	myData = []
+	myData.append(['t_','theta1_', 'theta2_', 'omega1_', 'omega2_'])
+	for i in range(len(t_)):
+		myData.append([t_[i], theta1_[i], theta2_[i], omega1_[i], omega2_[i]])
+	myFile = open('results.csv', 'w')
+	with myFile:
+		writer = csv.writer(myFile)
+		writer.writerows(myData)
+
+	print("Writing complete")
+
 def f_func(x_n, y_n):
 	m1 = task["segments"][0]["m"]
 	m2 = task["segments"][1]["m"]
@@ -73,7 +86,7 @@ def runge_kutta(dt, f):
 		omega1_.append(omega1_prev)
 		omega2_.append(omega2_prev)
 		t_.append(t_prev)
-		
+	print_to_csv(theta1_, theta2_, omega1_, omega2_, t_)
 	return theta1_, theta2_, omega1_, omega2_, t_
 
 
@@ -82,9 +95,9 @@ output_data = runge_kutta(0.01, f_func)
 fig, ax = plt.subplots()
 
 ax.scatter(output_data[4], output_data[0], c = 'red', label = "theta1")
-ax.scatter(output_data[4], output_data[1], c = 'green', label = "theta1")
-ax.scatter(output_data[4], output_data[2], c = 'blue', label = "theta1")
-ax.scatter(output_data[4], output_data[3], c = 'black', label = "theta1")
+ax.scatter(output_data[4], output_data[1], c = 'green', label = "theta2")
+ax.scatter(output_data[4], output_data[2], c = 'blue', label = "omega1")
+ax.scatter(output_data[4], output_data[3], c = 'black', label = "omega2")
 
 
 ax.set_title('Результаты расчетов')
